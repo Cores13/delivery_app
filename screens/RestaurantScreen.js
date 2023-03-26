@@ -12,7 +12,7 @@ import { setRestaurant } from '../features/restaurantSlice';
 const RestaurantScreen = () => {
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const {params: {
+    const { params: {
         id,
         imgUrl,
         title,
@@ -26,7 +26,7 @@ const RestaurantScreen = () => {
     }} = useRoute();
 
     useEffect(() => {
-        dispatch(setRestaurant(
+        dispatch(setRestaurant({
             id,
             imgUrl,
             title,
@@ -37,7 +37,7 @@ const RestaurantScreen = () => {
             dishes,
             long,
             lat
-        ));
+        }));
     }, [])
     
 
