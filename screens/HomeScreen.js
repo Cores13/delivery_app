@@ -1,4 +1,5 @@
-import { StyleSheet, View, Text, SafeAreaView, Image, Platform,StatusBar, TextInput, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, Image, Platform,StatusBar, TextInput, ScrollView } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import React, { useLayoutEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import {
@@ -22,16 +23,11 @@ const HomeScreen = () => {
         })
     }, []);
 
-    const styles = StyleSheet.create({
-        container: {
-            marginTop: Platform.OS == "android" ? StatusBar.currentHeight : 0,
-        },
-    });
     
   return (
     <SafeAreaView className="bg-white pt-4">
         {/* Header */}
-        <View className="flex-row pb-3 items-center mx-4 space-x-2" style={styles.container}>
+        <View className="flex-row pb-3 items-center mx-4 space-x-2">
             <Image source={{
                     uri: "https://links.papareact.com/wru"
                 }} 
