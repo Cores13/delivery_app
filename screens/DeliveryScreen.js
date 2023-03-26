@@ -6,8 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import * as Progress from 'react-native-progress'
 import { selectRestaurant } from '../features/restaurantSlice'
 import { useSelector } from 'react-redux'
-import MapView from 'react-native-maps';
-import {Marker} from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 
 const DeliveryScreen = () => {
     const navigation = useNavigation();
@@ -44,6 +43,7 @@ const DeliveryScreen = () => {
                     </Text>
                 </View>
             </View>
+            
             <MapView
                 initialRegion={{
                     latitude: 43.856783,
@@ -61,8 +61,8 @@ const DeliveryScreen = () => {
                     }}
                     title={restaurant.title}
                     description={restaurant.short_description}
-                    identifier="origin"
-                    pinColor="#00CCBB"
+                    identifier={"origin"}
+                    pinColor={"#00CCBB"}
                 />
             </MapView>
 
