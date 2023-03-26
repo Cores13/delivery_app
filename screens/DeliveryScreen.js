@@ -6,13 +6,13 @@ import { useNavigation } from '@react-navigation/native'
 import * as Progress from 'react-native-progress'
 import { selectRestaurant } from '../features/restaurantSlice'
 import { useSelector } from 'react-redux'
+import MapView from 'react-native-maps';
+import {Marker} from 'react-native-maps';
 
 const DeliveryScreen = () => {
     const navigation = useNavigation();
     const restaurant = useSelector(selectRestaurant);
-    
-    console.log(restaurant);
-    
+        
     return (
         <SafeAreaView className="bg-[#00CCBB] flex-1">
             <View className="z-50">
@@ -44,6 +44,44 @@ const DeliveryScreen = () => {
                     </Text>
                 </View>
             </View>
+            <MapView
+                initialRegion={{
+                    latitude: 43.856783,
+                    longitude: 18.418514,
+                    latitudeDelta: 0.005,
+                    longitudeDelta: 0.005,
+                }}
+                className="flex-1 -mt-10 z-0"
+                mapType='mutedStandard'
+            >
+                <Marker 
+                    coordinate={{
+                        latitude: 43.856783,
+                        longitude: 18.418514,
+                    }}
+                    title={restaurant.title}
+                    description={restaurant.short_description}
+                    identifier="origin"
+                    pinColor="#00CCBB"
+                />
+            </MapView>
+
+            <SafeAreaView className="bg-white flex-row items-center justify-center space-x-5 h-24 pb-5">
+                <Image 
+                    source={{
+                        uri: "https://links.papareact.com/wru",
+                    }}
+                    className="h-12 w-12 bg-gray-300 p-4 rounded-full ml-5"
+                />
+                <View className="flex-1">
+                    <Text className="text-lg">
+                        Sonny Sangha
+                    </Text>
+                    <Text className="text-gray-400">Your Rider</Text>
+                </View>
+
+                <Text className="text-[#00CCBB] text-lg mr-5 font-bold">Call</Text>
+            </SafeAreaView>
         </SafeAreaView>
     )
 }
